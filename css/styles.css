@@ -1,0 +1,41 @@
+html, body { min-width: 1100px; height: 100%; }
+
+.game {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2.5fr 1fr;
+    grid-template-rows: 8.5fr 1.5fr;
+    grid-template-areas: "f g s"
+                         "f c s";
+}
+
+.square {
+    border: 1px solid orange;
+}
+.square:before{
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
+
+#first-player {
+    grid-area: f;
+    background-color: blue;
+}
+
+#second-player {
+    grid-area: s;
+    background-color: red;
+}
+
+#game-field {
+    width: 85vh;
+    height: 85vh;
+    grid-area: g;
+    background-color: green;
+}
+
+#size-controls {
+    grid-area: c;
+    background-color: yellow;
+}
