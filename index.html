@@ -13,45 +13,13 @@
 <body>
     <div class="game">
         <div id="first-player" class="player"></div>
-        <table id="game-field" class="mx-auto rounded-lg">
-            <tr>
-                <td class="square">&nbsp;</td>
-                <td class="square">&nbsp;</td>
-                <td class="square">&nbsp;</td>
-                <td class="square">&nbsp;</td>
-                <td class="square">&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="square">&nbsp;</td>
-                <td class="square">&nbsp;</td>
-                <td class="square">&nbsp;</td>
-                <td class="square">&nbsp;</td>
-                <td class="square">&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="square">&nbsp;</td>
-                <td class="square">&nbsp;</td>
-                <td class="square">&nbsp;</td>
-                <td class="square">&nbsp;</td>
-                <td class="square">&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="square">&nbsp;</td>
-                <td class="square">&nbsp;</td>
-                <td class="square">&nbsp;</td>
-                <td class="square">&nbsp;</td>
-                <td class="square">&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="square">&nbsp;</td>
-                <td class="square">&nbsp;</td>
-                <td class="square">&nbsp;</td>
-                <td class="square">&nbsp;</td>
-                <td class="square">&nbsp;</td>
-            </tr>
-        </table>
+        <table id="game-field" class="mx-auto rounded-lg"></table>
         <div id="second-player" class="player"></div>
-        <div id="size-controls"></div>
+        <div id="size-controls" class="btn-group">
+            <button type="button" class="btn" onclick="resize(false)">&lt;&lt;</button>
+            <label id="size-label"></label>
+            <button type="button" class="btn" onclick="resize(true)">&gt;&gt;</button>
+        </div>
     </div>
 </body>
 </html>
