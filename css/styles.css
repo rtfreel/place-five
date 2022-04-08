@@ -1,33 +1,50 @@
-html, body { min-width: 1100px; height: 100%; }
+html, body { 
+    min-width: 1100px; 
+    height: 100%;
+}
+
+body {
+    background-color: #252a25;
+}
 
 .game {
     height: 100%;
     display: grid;
     grid-template-columns: 1fr 2.5fr 1fr;
-    grid-template-rows: 8.5fr 1.5fr;
+    grid-template-rows: 4fr 1fr;
     grid-template-areas: "f g s"
                          "f c s";
 }
 
+#game-field {
+    width: 80vh;
+    height: 80vh;
+    max-height: 80vh;
+    font-family: 'Courier New', monospace;
+    grid-area: g;
+}
 .square {
-    border: 1px solid green;
-}
-.square:before{
-    content: "";
-    display: block;
-    padding-top: 100%;
-}
+    background-color: rgba(0, 255, 0, 0.55);
+    border: 3px solid #252a25;
+    text-align: center;
+    color: #252525;
+    font-size: 5vh;
 
+    user-select: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+.square:hover {
+    background-color: rgb(0, 255, 0, 0.7);
+}
 
 #first-player {
     grid-area: f;
 }
 #second-player {
     grid-area: s;
-}
-#game-field {
-    width: 85vh;
-    grid-area: g;
 }
 #size-controls {
     grid-area: c;
