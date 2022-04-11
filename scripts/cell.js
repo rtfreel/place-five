@@ -14,21 +14,23 @@ const SIZE_FONT_REL = {
 
 class Cell {
     constructor(size) {
+        this.playerId = -1; // means cell is empty
         this.sym = "&nbsp";
         this.html = $("<td class=\"square\">" + this.sym + "</td>");
         $(this.html).css("font-size", SIZE_FONT_REL[size] + "vh");
         
         let obj = this;
         $(this.html).click(function(){
-            mark(obj.getRow(), obj.getCol());
+            turn(obj.getRow(), obj.getCol());
         });
     }
     
     getRow() { return $(this.html).parent().index(); }
     getCol() { return $(this.html).index(); }
 
-    setSymbol(sym) { 
-        this.sym = sym;
-        $(this.html).html(sym); 
+    occupie(id, player) {
+        this.playerId = id;
+        this.sym = player.sym;
+        $(this.html).html(this.sym);
     }
 }

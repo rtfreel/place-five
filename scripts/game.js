@@ -15,6 +15,30 @@ class Game{
             $(this.sizeOut).html(this.size + "&times;" + this.size);
     }
 
+    /**
+     * undefined - game is still running
+     * -1 - tie
+     * {id} - winner
+     */
+    checkWinner() {
+        let sortedCells = {};
+        let curId;
+        for(let i = 0; i < this.size; i++){
+            for(let j = 0; j < this.size; j++){
+                curId = this.cells[i][j].playerId;
+                if(sortedCells[curId] == undefined)
+                    sortedCells[curId] = [];
+                sortedCells[curId].push(this.cells[i][j]);
+            }
+        }
+        // if no empty cells left
+        if(sortedCells[-1] == undefined) return -1;
+        
+        // actual winner checking 
+
+        return undefined;
+    }
+
     generateCells() {
         this.cells = [];
         for(let i = 0; i < this.size; i++){
