@@ -14,9 +14,17 @@ $(document).ready(function(){
     let move = players[curPlayer].makeMove();
     if(move != undefined) 
         turn(move[0], move[1]);
+
+    $("#size-label").click(function() {
+        game.generate(game.size);
+        curPlayer = 0;
+    });
 });
 
 function turn(row, col){
+    // skip turn if game is not running
+    if(!game.running) return;
+
     // if cell is occupied
     if(game.cells[row][col].playerId != -1) return;
     

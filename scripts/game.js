@@ -5,11 +5,13 @@ class Game{
     }
 
     generate(size) {
+        this.running = false;
         this.size = size;
         this.generateCells();
         this.renderTable();
         if(this.sizeOut != undefined)
             $(this.sizeOut).html(this.size + "&times;" + this.size);
+        this.running = true;
     }
 
     /**
@@ -45,6 +47,7 @@ class Game{
 
                     // if sequence is long enough to win
                     if(curSeq.length >= CELLS_TO_WIN) {
+                        this.running = false;
                         curSeq.forEach(cell => cell.highlight());
                         return pId;
                     }

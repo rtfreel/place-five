@@ -2,7 +2,7 @@ class Player {
     constructor(game, playerId, symbol) {
         this.game = game;
         this.id = playerId;
-        this.symbol = symbol
+        this.symbol = symbol;
     }
     makeMove() { return undefined; }
 }
