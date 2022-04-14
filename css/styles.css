@@ -37,7 +37,14 @@ body {
     -ms-user-select: none;
 }
 .square:hover {
-    background-color: rgb(0, 255, 0, 0.7);
+    background-color: rgba(0, 255, 0, 0.7);
+}
+
+.highlighted {
+    background-color: rgba(255, 255, 0, 0.55);
+}
+.highlighted:hover {
+    background-color: rgba(255, 255, 0, 0.7);
 }
 
 #first-player {
@@ -63,7 +70,7 @@ body {
     min-width: 7vw;
 }
 #size-controls > button:hover{
-    background-color: rgb(0, 255, 0, 0.7);
+    background-color: rgba(0, 255, 0, 0.7);
 }
 #size-controls > button:focus{
     outline: none !important;

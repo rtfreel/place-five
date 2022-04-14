@@ -1,33 +1,36 @@
-const Person = "person";
-const AI = "ai";
-
 let game;
 let players;
 let curPlayer = 0;
 let tic = true;
 
+// entry point
 $(document).ready(function(){
     game = new Game("#game-field", "#size-label");
     game.generate(MIN_SIZE);
-    players = [{type: Person, sym: "&times;"},
-                {type: AI, sym: "o"}];
+
+    players = [new Player(game, 0, "&times"),
+                new AI(AI_DIFFICULT, game, 1, "o")];
+
+    let move = players[curPlayer].makeMove();
+    if(move != undefined) 
+        turn(move[0], move[1]);
 });
 
 function turn(row, col){
-    // cell is occupied
+    // if cell is occupied
     if(game.cells[row][col].playerId != -1) return;
     
     game.cells[row][col].occupie(curPlayer, players[curPlayer]);
 
     // check winner
-    let winner = game.checkWinner();
+    let winner = game.checkWinner(curPlayer);
     switch (winner){
         case undefined: break;  // game goes on
         case -1:                // tie
             alert("It's a tie");
             return;
         default:                // winner
-            alert("Player " + winner + "is the winner!");
+            alert("Player " + winner + " is the winner!");
             return;
     }
 
@@ -36,14 +39,9 @@ function turn(row, col){
     curPlayer %= players.length;
 
     // AI move
-    if(players[curPlayer].type == AI){
-        let r, c;
-        do {
-            r = Math.floor(Math.random() * game.size);
-            c = Math.floor(Math.random() * game.size);
-        } while (game.cells[r][c].playerId != -1);
-        turn(r, c);
-    }
+    let move = players[curPlayer].makeMove();
+    if(move != undefined) 
+        turn(move[0], move[1]);
 }
 
 function resize(add) {
@@ -51,9 +49,11 @@ function resize(add) {
         if(game.size == MAX_SIZE)
             return;
         game.generate(game.size + 1);
+        curPlayer = 0;
     } else {    // shrink table by one
         if(game.size == MIN_SIZE)
             return;
         game.generate(game.size - 1);
+        curPlayer = 0;
     }
 }
