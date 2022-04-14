@@ -11,19 +11,21 @@ $(document).ready(function(){
     players = [new Player(game, 0, "&times"),
                 new AI(AI_DIFFICULT, game, 1, "o")];
 
-    let move = players[curPlayer].makeMove();
-    if(move != undefined) 
-        turn(move[0], move[1]);
+    aiTurnCheck();
 
     $("#size-label").click(function() {
         game.generate(game.size);
         curPlayer = 0;
+        aiTurnCheck();
     });
 });
 
 function turn(row, col){
-    // skip turn if game is not running
-    if(!game.running) return;
+    // skip turn if game is finishrd for any reason
+    if(!game.running){
+        if(game.started) return;
+        game.start();
+    }
 
     // if cell is occupied
     if(game.cells[row][col].playerId != -1) return;
@@ -47,6 +49,10 @@ function turn(row, col){
     curPlayer %= players.length;
 
     // AI move
+    aiTurnCheck();
+}
+
+function aiTurnCheck() {
     let move = players[curPlayer].makeMove();
     if(move != undefined) 
         turn(move[0], move[1]);
@@ -57,11 +63,11 @@ function resize(add) {
         if(game.size == MAX_SIZE)
             return;
         game.generate(game.size + 1);
-        curPlayer = 0;
     } else {    // shrink table by one
         if(game.size == MIN_SIZE)
             return;
         game.generate(game.size - 1);
-        curPlayer = 0;
     }
+    curPlayer = 0;
+    aiTurnCheck();
 }

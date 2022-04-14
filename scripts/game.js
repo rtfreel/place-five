@@ -2,17 +2,24 @@ class Game{
     constructor(table, sizeOut = undefined) {
         this.table = table;
         this.sizeOut = sizeOut;
+        this.running = false;
+        this.started = false;
     }
 
     generate(size) {
         this.running = false;
+        this.started = false;
         this.size = size;
         this.generateCells();
         this.renderTable();
         if(this.sizeOut != undefined)
             $(this.sizeOut).html(this.size + "&times;" + this.size);
-        this.running = true;
     }
+
+    start() {
+        this.started = true;
+        this.running = true;
+    }    
 
     /**
      * undefined - game is still running
@@ -57,7 +64,10 @@ class Game{
         }
 
         // if no empty cells left
-        if(sortedCells[-1] == undefined) return -1;
+        if(sortedCells[-1] == undefined) {
+            this.running = false;
+            return -1;
+        }
 
         return undefined;
     }
