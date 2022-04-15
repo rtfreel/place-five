@@ -18,7 +18,25 @@ const
 
     WIN_MSG = "Winner!",
     TIE_MSG = "It's a tie!",
-    TURN_MSG = "Thinking...";
+    TURN_MSG = "Thinking...",
+    SPECIAL_SYMBOLS = [
+        "&times;",
+        "&omicron;",
+        "&infin;",
+        "&Xi;",
+        "&copy;",
+        "&amp;",
+        "&curren;",
+        "&divide;",
+        "&Delta;",
+        "&piv;",
+        "&bull;",
+        "&spades;",
+        "&clubs;",
+        "&hearts;",
+        "&diams;",
+        "&loz;"
+    ];
 
 const AI_DIFFICULTY = [
     // no intelligence

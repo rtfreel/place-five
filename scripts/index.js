@@ -5,6 +5,8 @@ let tic = true;
 
 // entry point
 $(document).ready(function(){
+    setSymbols();
+
     // create game
     game = new Game("#game-field", "#size-label");
     game.generate(MIN_SIZE);
@@ -34,7 +36,26 @@ $(document).ready(function(){
         curPlayer = 0;
         aiTurnCheck();
     });
+
+    // set up symbol buttons
+    $("#first-player .dropdown-item").click(function() {
+        $("#first-player .mark-edit").val($(this).html());
+        preparePlayers();
+    });
+    $("#second-player .dropdown-item").click(function() {
+        $("#second-player .mark-edit").val($(this).html());
+        preparePlayers();
+    });
 });
+
+function setSymbols() {
+    for(let si = 0; si < SPECIAL_SYMBOLS.length; si++) {
+        let btn = $("<button></button>");
+        btn.addClass("dropdown-item");
+        btn.html(SPECIAL_SYMBOLS[si]);
+        $(".dropdown-menu").append(btn);
+    }
+}
 
 function turn(row, col){
     // skip turn if game is finishrd for any reason
@@ -92,12 +113,12 @@ function resize(add) {
 
 function preparePlayers() {
     let types = [
-            $("#first-player .player-type")[0].value, 
-            $("#second-player .player-type")[0].value
+            $("#first-player .player-type").val(), 
+            $("#second-player .player-type").val()
         ],
         syms = [
-            $("#first-player .mark-edit")[0].value,
-            $("#second-player .mark-edit")[0].value
+            $("#first-player .mark-edit").val(),
+            $("#second-player .mark-edit").val()
         ],
         stats = [
             $("#first-player .player-status"),
