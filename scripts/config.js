@@ -14,10 +14,15 @@ const
         13: 3.6,
         14: 3.3,
         15: 3
-    };
+    },
 
-const
-    AI_NO_INTELLIGENCE = {
+    WIN_MSG = "Winner!",
+    TIE_MSG = "It's a tie!",
+    TURN_MSG = "Thinking...";
+
+const AI_DIFFICULTY = [
+    // no intelligence
+    {
         ONE_STEP_WIN: 0,
         PREVENT_ONE_STEP_WIN: 0,
         PREVENT_SEQ_LONGER: 0,
@@ -27,7 +32,8 @@ const
         WIN_MOVE: 0,
         SPREAD_MOVE: 0
     },
-    AI_EASY = {
+    // easy
+    {
         ONE_STEP_WIN: 0.2,
         PREVENT_ONE_STEP_WIN: 0.2,
         PREVENT_SEQ_LONGER: 0,
@@ -37,7 +43,8 @@ const
         WIN_MOVE: 0.2,
         SPREAD_MOVE: 1
     },
-    AI_MEDIUM = {
+    // medium
+    {
         ONE_STEP_WIN: 0.5,
         PREVENT_ONE_STEP_WIN: 0.5,
         PREVENT_SEQ_LONGER: 0.4,
@@ -47,7 +54,8 @@ const
         WIN_MOVE: 1,
         SPREAD_MOVE: 1
     },
-    AI_DIFFICULT = {
+    // difficult
+    {
         ONE_STEP_WIN: 1,
         PREVENT_ONE_STEP_WIN: 1,
         PREVENT_SEQ_LONGER: 1,
@@ -57,7 +65,8 @@ const
         WIN_MOVE: 1,
         SPREAD_MOVE: 1
     },
-    AI_IMPOSSIBLE = {
+    // impossible
+    {
         ONE_STEP_WIN: 1,
         PREVENT_ONE_STEP_WIN: 1,
         PREVENT_SEQ_LONGER: 1,
@@ -66,4 +75,5 @@ const
         PREVENT_SPREAD: 1,
         WIN_MOVE: 1,
         SPREAD_MOVE: 1
-    };
+    }
+];

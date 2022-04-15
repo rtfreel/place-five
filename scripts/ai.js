@@ -4,7 +4,23 @@ class Player {
         this.id = playerId;
         this.symbol = symbol;
     }
-    makeMove() { return undefined; }
+
+    makeMove() { 
+        this.updateStatus(TURN_MSG);
+        return undefined; 
+    }
+
+    endTurn() { this.updateStatus(""); }
+
+    updateStatus(newStatus) { 
+        this.status = newStatus;
+        if(this.statusOut != undefined)
+            $(this.statusOut).text(newStatus);
+    }
+
+    setStatusOut(statusElement) {
+        this.statusOut = statusElement;
+    }
 }
 
 class AI extends Player{
@@ -14,6 +30,7 @@ class AI extends Player{
     }
 
     makeMove() {
+        this.updateStatus(TURN_MSG);
         this.analysis();
 
         // occupie last cell to win / find longest sequence

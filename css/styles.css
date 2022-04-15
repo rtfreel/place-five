@@ -41,10 +41,10 @@ body {
 }
 
 .highlighted {
-    background-color: rgba(255, 255, 0, 0.55);
+    background-color: rgba(255, 255, 0, 0.55) !important;
 }
 .highlighted:hover {
-    background-color: rgba(255, 255, 0, 0.7);
+    background-color: rgba(255, 255, 0, 0.7) !important;
 }
 
 #first-player {
@@ -84,4 +84,60 @@ body {
     background-color: #255525;
     text-align: center;
     padding-top: 2vh;
+}
+.player-name {
+    width: 95%;
+    background-color: #252a25;
+    color: white;
+    border-width: 0px;
+    border-bottom: 1px solid white;
+    border-radius: 3px;
+    text-align: center;
+    font-size: 3vh;
+}
+.player-name:focus {
+    border-bottom: 1px solid white;
+    outline: none !important;
+    box-shadow: none;
+}
+.player-mark {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.mark-edit {
+    font-family: 'Courier Bold', monospace;
+    background-color: #252a25;
+    color: white;
+    border-color: white;
+    font-size: 3vh;
+    max-width: 5.12vh;
+    outline: none !important;
+    box-shadow: none;
+}
+.player-mark .btn {
+    font-size: 3vh;
+    color: white;
+    border-color: white;
+    outline: none !important;
+    box-shadow: none;
+}
+.dropdown-menu, .dropdown-item {
+    background-color: #353a35;
+    color: white;
+}
+.player-type {
+    width: 95%;
+    font-size: 2.5vh;
+    background-color: #252a25;
+    color: white;
+    border-radius: 3px;
+    padding: 3px;
+}
+
+.player-status {
+    font-family: Helvetica, sans-serif;
+    text-align: center;
+    font-size: 5vh;
+    color: white;
 }
